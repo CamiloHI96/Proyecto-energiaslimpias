@@ -4,12 +4,42 @@
 } */
 
 #logo {
-    animation: movimiento 3s infinite; /* Nombre de la animación, duración, y bucle infinito */
-    position: relative; /* Necesario para permitir movimientos */
+    animation: movimiento 3s infinite;
+    /* Nombre de la animación, duración, y bucle infinito */
+    position: relative;
+    /* Necesario para permitir movimientos */
 }
-  
+
 @keyframes movimiento {
-    0% { transform: translateY(0); } /* Posición inicial */
-    50% { transform: translateY(-20px); } /* Se eleva */
-    100% { transform: translateY(0); } /* Vuelve a la posición inicial */
+    0% {
+        transform: translateY(0);
+    }
+
+    /* Posición inicial */
+    50% {
+        transform: translateY(-20px);
+    }
+
+    /* Se eleva */
+    100% {
+        transform: translateY(0);
+    }
+
+    /* Vuelve a la posición inicial */
+}
+
+.fan-icon {
+    font-size: 100px;
+    /* Ajusta el tamaño según sea necesario */
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
