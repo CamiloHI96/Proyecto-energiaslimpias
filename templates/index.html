@@ -2,14 +2,14 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../static/assets/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../static/assets/favicon.ico" type="image/x-icon" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:400,700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:400,700,400italic,700italic"
         type="text/css" />
-    <link rel="stylesheet" href="../static/styles/styles.css">
+    <link rel="stylesheet" href="../static/styles/styles.css" />
     <title>Talento Tech</title>
 </head>
 
@@ -25,36 +25,92 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#dashboard">Dashboard</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#estimador">Estimador de Energia Renovable</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#cargar">Cargar Información</a></li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#estimador">Estimador de Energia
+                            Renovable</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#cargar">Cargar Información</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
-            <img class="masthead-avatar mb-5" src="../static/assets/img/logo.png" alt="logo">
-            <h1 class="masthead-heading text-uppercase mb-0">Energia Renovable</h1>
+            <img class="masthead-avatar mb-5" src="../static/assets/img/logo.png" alt="logo" />
+            <h1 class="masthead-heading text-uppercase mb-0">Energía Renovable</h1>
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-fan"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <p class="masthead-subheading font-weight-light mb-0">El futuro brillante de nuestro planeta comienza con la
-                energia renovable, una fuente inagotable de esperanza que ilumina el camino hacia un un mundo mas limpio
-                y sostenible.</p>
+            <p class="masthead-subheading font-weight-light mb-5">
+                El futuro brillante de nuestro planeta comienza con la energía
+                renovable, una fuente inagotable de esperanza que ilumina el camino
+                hacia un mundo más limpio y sostenible.
+            </p>
+            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 600px">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../static/assets/img/bubls-drawn-solar-panel.jpg" class="d-block mx-auto img-fluid"
+                            alt="Imagen 1" style="height: 300px; object-fit: cover" />
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Energía Solar</h5>
+                            <p>Una fuente limpia e inagotable.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../static/assets/img/wind-fans.jpg" class="d-block mx-auto img-fluid" alt="Imagen 2"
+                            style="height: 300px; object-fit: cover" />
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Energía Eólica</h5>
+                            <p>Aprovechando la fuerza del viento.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../static/assets/img/futuristic-representation-water-structure.jpg"
+                            class="d-block mx-auto img-fluid" alt="Imagen 3" style="height: 300px; object-fit: cover" />
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Energía Hidráulica</h5>
+                            <p>Generando electricidad con agua.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
         </div>
     </header>
     <section class="page-section dashboard" id="dashboard">
         <div class="container">
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dashboard</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+                Dashboard
+            </h2>
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-solar-panel "></i></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
                 <div class="divider-custom-line"></div>
             </div>
             <div class="row justify-content-center">
@@ -93,11 +149,14 @@
     </section>
     <section class="page-section bg-primary text-white mb-0" id="estimador">
         <div class="container">
-            <h2 class="page-section-heading text-center text-uppercase text-white">Estimador de energía renovable en el
-                consumo eléctrico</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-white">
+                Estimador de energía renovable en el consumo eléctrico
+            </h2>
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
                 <div class="divider-custom-line"></div>
             </div>
             <form method="POST">
@@ -106,7 +165,7 @@
                         <div class="col-lg-8 col-xl-7">
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="consumo_total" name="consumo_total" type="text"
-                                    required>
+                                    required />
                                 <label for="consumo_total">Consumo Total (kwh)</label>
                             </div>
                         </div>
@@ -117,7 +176,8 @@
                         <i class="fas fa-plug me-2"></i> Calcular
                     </button>
                 </div>
-            </form><br>
+            </form>
+            <br />
             <div class="text-center mb-5">
                 <img src="../static/assets/img/formula.png" width="50%" height="50%" />
             </div>
@@ -125,11 +185,14 @@
     </section>
     <section class="page-section" id="cargar">
         <div class="container">
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">cargar archivo de
-                información</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+                cargar archivo de información
+            </h2>
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-plug-circle-plus"></i></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-plug-circle-plus"></i>
+                </div>
                 <div class="divider-custom-line"></div>
             </div>
             <div class="row justify-content-center">
@@ -142,7 +205,9 @@
                                 -2022</label>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary btn-xl" type="submit">Cargar</button>
+                            <button class="btn btn-primary btn-xl" type="submit">
+                                Cargar
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -152,17 +217,13 @@
     <footer class="footer text-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    CIAF
-                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">CIAF</div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h4 class="text-uppercase mb-4">Juan Camilo</h4>
                     <h4 class="text-uppercase mb-4">Lina</h4>
                     <h4 class="text-uppercase mb-4">Julian</h4>
                 </div>
-                <div class="col-lg-4">
-                    Pereira
-                </div>
+                <div class="col-lg-4">Pereira</div>
             </div>
         </div>
     </footer>
