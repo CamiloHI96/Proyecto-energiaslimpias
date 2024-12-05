@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="../static/styles/mi-estilo.css">
     <title>Talento Tech</title>
 </head>
+
 <body id="page-top">
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
@@ -41,7 +43,7 @@
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <img src="../static/assets/img/logo.png" class="d-block mx-auto img-fluid" alt="Logo"
-            style="height: 300px; object-fit: cover" id="logo"/>
+                style="height: 300px; object-fit: cover" id="logo" />
             <h1 class="masthead-heading text-uppercase mb-0"><span class="auto-type"></span></h1>
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -171,6 +173,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-7 mb-3">
+                        {% if porcentaje_renovable is not none %}
+                            <div class="resultado">
+                                <h4><span class="badge text-bg-success">
+                                <i class="fas fa-solar-panel"></i>El porcentaje de energia renovable en tuconsumo:
+                                {{porcentaje_renovable | round(2)}} % </span></h4>
+                            </div>
+                        {% elif error %}
+                            <div class="error">
+                                <h4><span class="badge text-bg-danger">{{error}}</span></h4>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="text-center mt-4">
                     <button class="btn btn-xl btn-outline-light">
                         <i class="fas fa-plug me-2"></i> Calcular
@@ -218,8 +235,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                        <img src="../static/assets/img/logo-ciaf.webp" class="d-block mx-auto img-fluid" alt="Logo-Ciaf"
-                            style="height: 100px; object-fit: cover" />
+                    <img src="../static/assets/img/logo-ciaf.webp" class="d-block mx-auto img-fluid" alt="Logo-Ciaf"
+                        style="height: 100px; object-fit: cover" />
                 </div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h4 class="text-uppercase mb-4">Juan Camilo Hernandez Ibarguen</h4>
@@ -237,4 +254,5 @@
     <script src="../static/js/scripts.js"></script>
     <script src="/static/js/titulo.js" defer></script>
 </body>
+
 </html>

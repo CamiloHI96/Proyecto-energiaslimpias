@@ -1,18 +1,44 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import csv
 from waitress import serve
 
 app = Flask(__name__)
 app.secret_key = 'camilo123'
 
-# Ruta de inicio
-@app.route('/')
-def index():
-    return render_template('index.html')
+def cargar_datos_renovables(ruta_csv):
+    datos=[]
+    try:
+        with open(ruta_csv, mode='r', encoding='utf-8') as archivo_csv:
+            lector = csv.DictReader(archivo_csv)
+            for fila in lector:
+                datos.append({'entity': fila['Entity'],'code': fila['Code'],'year': int(fila['Year']),'renewables': float(fila['Renewables (%equivalent primary energy)'])})
+    except Exception as e:
+        print(f"Error al leer el archivo CSV: {e}")
+    return datos
 
-# Ruta secundaria
-@app.route('/index.html')
-def inicio():
-    return render_template('index.html')
+RUTA_CSV = 'static/archivo/data.csv'
+datos_renovables = cargar_datos_renovables(RUTA_CSV)
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    porcentaje_renovable = None
+    error = None 
+
+    if request.method == 'POST':
+        try:
+            consumo_total = float(request.form['consumo_total'])
+            if consumo_total <= 0:
+                error = 'El consumo total debe ser un valor positivo'
+            else:
+                producto_total_renovable = sum(energia ['renewable'] for energia in datos_renovables)
+                if producto_total_renovable >= consumo_total:
+                    porcentaje_renovable = (consumo_total / producto_total_renovable)*100
+                else:
+                    porcentaje_renovable = 100
+        except ValueError:
+            error = 'Por favor ingrese un valor valido para el consumo total'
+    
+    return render_template('index.html', porcentaje_renovable = porcentaje_renovable, error=error)
 
 if __name__ == '__main__':
     #server para subir a Render
