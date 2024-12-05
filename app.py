@@ -8,11 +8,11 @@ app.secret_key = 'camilo123'
 def index():
     return render_template('index.html')
 
-# Ruta de inicio
+# Ruta secundaria
 @app.route('/index.html')
 def inicio():
     return render_template('index.html')
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    from waitress import serve
+    serve(app, host='0.0.0.0', port=8080)
