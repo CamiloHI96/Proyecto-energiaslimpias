@@ -1,0 +1,33 @@
+.bg-nave{
+    background-color: #4B4B4B;
+}
+
+.bg-fd1{
+    background-color: #F5F5F5;
+}
+
+.bg-fd2{
+    background-color: #D3D3D3;
+}
+
+.bg-letra h1 {
+    color: #2F2F2F;
+}
+
+.bg-letra h2{
+    color: #2F2F2F;
+    text-decoration: #2F2F2F; 
+}
+
+.bg-letra p {
+    color: #2F2F2F;
+}
+
+.bg-letra2 p{
+    color: white;
+    text-decoration: #2F2F2F;
+}
+
+.bg-botones{
+    background-color: #FFB4A2;
+}
