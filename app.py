@@ -57,6 +57,6 @@ def index():
 
 if __name__ == '__main__':
     #server para subir a Render
-    serve(app, host='0.0.0.0', port=5000)
+    #serve(app, host='0.0.0.0', port=5000)
     #trabajar en entorno local
-    #app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
