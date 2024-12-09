@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request
 import csv
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,25 +10,17 @@ import os
 app = Flask(__name__) 
 app.secret_key = 'camilo123'
 
-def limpiar_encabezados(encabezados):
-    return [encabezado.strip() for encabezado in encabezados]
-
 def cargar_datos_renovables(ruta_csv):
-    datos = []
+    datos=[]
     try:
         with open(ruta_csv, mode='r', encoding='utf-8') as archivo_csv:
             lector = csv.DictReader(archivo_csv)
-            print(f"Encabezados del archivo CSV: {lector.fieldnames}")  # Imprime los encabezados
             for fila in lector:
                 datos.append({
                     'entity': fila['Entity'],
                     'code': fila['Code'],
                     'year': int(fila['Year']),
-<<<<<<< HEAD
                     'renewables': float(fila['Renewables (% equivalent primary energy)'])
-=======
-                    'renewables': float(fila['Renewables (% equivalent primary energy)'])  # Nombre ajustado
->>>>>>> 0b5f456b41434aa6d76018f89c3533603c769ada
                 })
     except Exception as e:
         print(f"Error al leer el archivo CSV: {e}")
@@ -61,7 +53,6 @@ def load_data():
 def index():
     porcentaje_renovable = None
     error = None
-<<<<<<< HEAD
     
     data = load_data()
     plt.subplots(figsize=(3,2))
@@ -79,17 +70,51 @@ def index():
     plt.savefig(img, format='png')
     img.seek(0)
     graph_url=base64.b64encode(img.getvalue()).decode('utf-8')
-    
-=======
 
->>>>>>> 0b5f456b41434aa6d76018f89c3533603c769ada
+    #---------------------------------TORTA---------------------------------------------------------------------------------
+    df_renewables = pd.read_csv('Website/static/archivo/04 share-electricity-renewables.csv')
+    df_wind = pd.read_csv('Website/static/archivo/11 share-electricity-wind.csv')
+    df_solar = pd.read_csv('Website/static/archivo/15 share-electricity-solar.csv')
+    df_hydro = pd.read_csv('Website/static/archivo/07 share-electricity-hydro.csv')
+
+    year = df_renewables['Year'].max()
+    renewables_data = df_renewables[df_renewables['Year'] == year]
+    wind_data = df_wind[df_wind['Year'] == year]
+    solar_data = df_solar[df_solar['Year'] == year]
+    hydro_data = df_hydro[df_hydro['Year'] == year]
+
+    df = pd.merge(renewables_data[['Entity', 'Renewables (% electricity)']], wind_data[['Entity', 'Wind (% electricity)']], on='Entity')
+    df = pd.merge(df, solar_data[['Entity', 'Solar (% electricity)']], on='Entity')
+    df = pd.merge(df, hydro_data[['Entity', 'Hydro (% electricity)']], on='Entity')
+
+    wind_percentage = df['Wind (% electricity)'].values[0]
+    solar_percentage = df['Solar (% electricity)'].values[0]
+    hydro_percentage = df['Hydro (% electricity)'].values[0]
+    
+    total_renewables = wind_percentage+solar_percentage+hydro_percentage
+
+    data = {
+        'Energia Renovable' : ['Eolica', 'Solar', 'Hidroelectrica'],
+        'Participacion' : [wind_percentage, solar_percentage, hydro_percentage]
+    }
+    df_graph = pd.DataFrame(data)
+    fig, ax = plt.subplots()
+    ax.set_title('Participacion de Energias Renovables', fontsize=14)
+    ax.pie(df_graph['Participacion'], labels=df_graph['Energia Renovable'], autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')
+
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    graph_url2 = base64.b64encode(img.getvalue()).decode('utf-8')
+    #-----------------------------------------------------------------------------------------------------------------------
+    
     if request.method == 'POST':
         try:
             consumo_total = float(request.form['consumo_total'])
             if consumo_total <= 0:
                 error = "El consumo total debe ser un valor positivo."
             else:
-<<<<<<< HEAD
                 produccion_total_renovable = sum(energia['renewables'] for energia in datos_renovables)
                 if produccion_total_renovable >= consumo_total:
                     porcentaje_renovable = (consumo_total/produccion_total_renovable)*100
@@ -99,26 +124,9 @@ def index():
         except ValueError:
             error ="Por Favor ingrese un valor válido para el consumo total."
     
-    return render_template('index.html',porcentaje_renovable = porcentaje_renovable,error=error,graph_url = graph_url)
-=======
-                producto_total_renovable = sum(energia['renewables'] for energia in datos_renovables)
-                if producto_total_renovable >= consumo_total:
-                    porcentaje_renovable = (consumo_total / producto_total_renovable) * 100
-                else:
-                    porcentaje_renovable = 100
+    return render_template('index.html',porcentaje_renovable = porcentaje_renovable,error=error,graph_url = graph_url, graph_url2 = graph_url2)
 
-            session['porcentaje_renovable'] = porcentaje_renovable
-            session['error'] = error
-        except ValueError:
-            error = 'Por favor ingrese un valor valido para el consumo total'
-
-    porcentaje_renovable = session.get('porcentaje_renovable', None)
-    error = session.get('error', None)
-
-    return render_template('index.html', porcentaje_renovable=porcentaje_renovable, error=error)
->>>>>>> 0b5f456b41434aa6d76018f89c3533603c769ada
-
-if __name__ == '__main__':
+if __name__ == '_main_':
     #server para subir a Render
     #serve(app, host='0.0.0.0', port=5000)
     #trabajar en entorno local
