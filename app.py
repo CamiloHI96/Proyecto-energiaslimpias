@@ -127,8 +127,14 @@ def index():
     
     return render_template('index.html',porcentaje_renovable = porcentaje_renovable,error=error,graph_url = graph_url, graph_url2 = graph_url2)
 
+# Comprobamos si estamos en Render o en entorno local
 if __name__ == '__main__':
-    #server para subir a Render
-    serve(app, host='0.0.0.0', port=5000)
-    #trabajar en entorno local
-    #app.run(debug=True, host='0.0.0.0', port=5000)
+    # Verificar si la variable de entorno RENDER_ENV está definida
+    if os.getenv('RENDER_ENV') == 'true':
+        # Usar el servidor de Waitress en Render
+        print("Running on Render")
+        serve(app, host='0.0.0.0', port=5000)
+    else:
+        # Usar el servidor de Flask en entorno local
+        print("Running locally")
+        app.run(debug=True, host='0.0.0.0', port=5000)
