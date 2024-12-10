@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:400,700,400italic,700italic" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" />
     <link rel="stylesheet" href="{{url_for('static', filename='styles/mi-estilo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/animaciones.css')}}">
     <title>Talento Tech</title>
 </head>
 
@@ -44,7 +45,7 @@
             <img src="{{url_for('static', filename='assets/img/logo.png')}}" class="d-block mx-auto img-fluid" alt="Logo"
                 style="height: 300px; object-fit: cover" id="logo" />
             <h1 class="masthead-heading text-uppercase mb-0"><span class="auto-type"></span></h1>
-            <div class="divider-custom">
+            <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon fan-icon"><i class="fas fa-fan"></i></div>
                 <div class="divider-custom-line"></div>
@@ -104,10 +105,14 @@
     </header>
     <section class="page-section dashboard" id="dashboard">
         <div class="container">
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dashboard</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+                Dashboard
+            </h2>
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-solar-panel "></i></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
                 <div class="divider-custom-line"></div>
             </div>
             <div class="row justify-content-center">
@@ -118,7 +123,7 @@
                 </div>
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <img src="data: image/png;base64, {{ graph_url2 }}" alt="Grafico de Barras"/>
+                        <img src="data: image/png;base64, {{ graph_url2 }}" alt="Grafico de Torta"/>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-5">
@@ -170,12 +175,14 @@
                             <div class="error">
                                 <h4><span class="badge text-bg-danger">{{error}}</span></h4>
                             </div>
-                        </div>
-                        <div class="text-center mt-4">
-                            <button class="btn btn-xl btn-outline-light">
-                                <i class="fas fa-plug me-2"></i> Calcular
-                            </button>
-                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-xl btn-outline-light">
+                        <i class="fas fa-plug me-2"></i> Calcular
+                    </button>
+                </div>
             </form>
             <br />
             <div class="text-center mb-5">
@@ -224,7 +231,7 @@
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h4 class="text-uppercase mb-4">Juan Camilo Hernandez Ibarguen</h4>
                     <h4 class="text-uppercase mb-4">Lina Marcela Sepulveda</h4>
-                    <h4 class="text-uppercase mb-4">Erlin Julian Quesada Pinzón</h4>
+                    <h4 class="text-uppercase mb-4">Julian Quesada</h4>
                 </div>
                 <div class="col-lg-4">
                     <img src="{{url_for('static', filename='assets/img/logo_talentotech.webp')}}" class="d-block mx-auto img-fluid"
@@ -236,6 +243,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}?v=1.0">
     <script src="{{ url_for('static', filename='js/scripts.js') }}?v=1.0"></script>
-    <script src="/static/js/titulo.js" defer></script>
+    <script src="{{ url_for('static', filename='js/titulo.js') }}?v=1.0" defer></script>
 </body>
+
 </html>
