@@ -70,7 +70,7 @@ def obtener_grafico_barras():
     data = {key: value for key, value in datos_globales.items() if isinstance(value, (int, float))}
     df = pd.DataFrame(list(data.items()), columns=['Fuente', 'Producción (TWh)'])
 
-    fig, ax = plt.subplots(figsize=(5, 4))
+    fig, ax = plt.subplots(figsize=(6, 5))
     ax.bar(df['Fuente'], df['Producción (TWh)'], color=['blue', 'orange', 'green', 'red', 'purple'][:len(df)])
     ax.set_title('Producción de Energía Renovable por Fuente', fontsize=12)
     ax.set_xlabel('Fuente de Energía', fontsize=12)
@@ -100,7 +100,7 @@ def obtener_grafico_pastel():
     }
     df_graph = pd.DataFrame(data_pie)
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6, 5))
     ax.pie(df_graph['Participacion'], labels=df_graph['Energia Renovable'], autopct='%1.1f%%', startangle=90, colors=['skyblue', 'gold', 'lightgreen'])
     ax.set_title('Participación de Energías Renovables', fontsize=14)
     ax.axis('equal')
