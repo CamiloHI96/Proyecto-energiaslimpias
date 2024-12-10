@@ -6,6 +6,7 @@ import seaborn as sns
 from io import BytesIO
 import base64
 import os
+from waitress import serve
 
 app = Flask(__name__) 
 app.secret_key = 'camilo123'
