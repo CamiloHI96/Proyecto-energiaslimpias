@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:400,700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:400,700,400italic,700italic" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/mi-estilo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/mi-estilos.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/animaciones.css')}}">
     <title>Talento Tech</title>
 </head>
 
 <body id="page-top">
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg bg-nav text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top">Energia Renovable</a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-botones text-white rounded" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -40,17 +40,17 @@
             </div>
         </div>
     </nav>
-    <header class="masthead bg-primary text-white text-center">
+    <header class="masthead bg-fd1 text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <img src="{{url_for('static', filename='assets/img/logo.png')}}" class="d-block mx-auto img-fluid" alt="Logo"
                 style="height: 300px; object-fit: cover" id="logo" />
-            <h1 class="masthead-heading text-uppercase mb-0"><span class="auto-type"></span></h1>
-            <div class="divider-custom divider-light">
+            <h1 class="masthead-heading text-uppercase mb-0 letra"><span class="auto-type"></span></h1>
+            <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon fan-icon"><i class="fas fa-fan"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <p class="masthead-subheading font-weight-light mb-5">
+            <p class="masthead-subheading font-weight-light mb-5 letra3">
                 El futuro brillante de nuestro planeta comienza con la energía
                 renovable, una fuente inagotable de esperanza que ilumina el camino
                 hacia un mundo más limpio y sostenible.
@@ -103,7 +103,7 @@
             </div>
         </div>
     </header>
-    <section class="page-section dashboard" id="dashboard">
+    <section class="page-section dashboard bg-fd2" id="dashboard">
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
                 Dashboard
@@ -118,33 +118,33 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <img src="data: image/png;base64, {{ graph_url }}" alt="Grafico de Barras"/>
+                        <img src="data: image/png;base64, {{ graph_url }}" alt="Grafico de Barras" width="100%" height="100%"/>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <img src="data: image/png;base64, {{ graph_url2 }}" alt="Grafico de Torta"/>
+                        <img src="data: image/png;base64, {{ graph_url2 }}" alt="Grafico de Barras" width="100%" height="100%"/>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <p>Grafica 3</p>
+                        <img src="data: image/png;base64, {{ graph_url3 }}" alt="Grafico de Barras" width="100%" height="100%"/>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 mb-5 mb-lg-0">
+                <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <p>Grafica 4</p>
+                        <img src="data: image/png;base64, {{ graph_url4 }}" alt="Grafico de Barras" width="100%" height="100%"/>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="page-section bg-primary text-white mb-0" id="estimador">
+    <section class="page-section bg-fd1 letra2 mb-0" id="estimador">
         <div class="container">
-            <h2 class="page-section-heading text-center text-uppercase text-white">
+            <h2 class="page-section-heading text-center text-uppercase letra2">
                 Estimador de energía renovable en el consumo eléctrico
             </h2>
-            <div class="divider-custom divider-light">
+            <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon">
                     <i class="fas fa-lightbulb"></i>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <button class="btn btn-xl btn-outline-light">
+                    <button class="btn btn-xl border-dark text-dark" id="boton">
                         <i class="fas fa-plug me-2"></i> Calcular
                     </button>
                 </div>
@@ -190,9 +190,9 @@
             </div>
         </div>
     </section>
-    <section class="page-section" id="cargar">
+    <section class="page-section bg-fd2" id="cargar">
         <div class="container">
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+            <h2 class="page-section-heading text-center text-uppercase mb-0 letra">
                 cargar archivo de información
             </h2>
             <div class="divider-custom">
@@ -202,7 +202,7 @@
                 </div>
                 <div class="divider-custom-line"></div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="boton">
                 <div class="col-lg-8 col-xl-7">
                     <form action="POST">
                         <div class="form-floating mb-3">
@@ -212,7 +212,7 @@
                                 -2022</label>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary btn-xl" type="submit">
+                            <button class="btn btn-xl boton border-dark text-dark" type="submit">
                                 Cargar
                             </button>
                         </div>
@@ -221,7 +221,7 @@
             </div>
         </div>
     </section>
-    <footer class="footer text-center">
+    <footer class="bg-footer text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">

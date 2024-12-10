@@ -7,8 +7,8 @@ script.onload = function() {
   // Inicializar Typed para el título
   var typed = new Typed(".auto-type", {
     strings: ["Energia Renovable", "100% Limpia", "La Energia del Futuro"],
-    cursorChar: '',
-    startDelay: 0,
+    cursorChar: ' /',
+    startDelay: 1000,
     tySpeed: 1000,
     backSpeed: 100,
     loop: true
