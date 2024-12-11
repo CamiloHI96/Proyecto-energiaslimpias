@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="{{url_for('static', filename='assets/favicon.ico')}}" type="image/x-icon" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:400,700" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:400,700,400italic,700italic" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:400,700,400italic,700italic"
+        type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" />
     <link rel="stylesheet" href="{{url_for('static', filename='styles/mi-estilos.css')}}">
@@ -43,9 +44,11 @@
     </nav>
     <header class="masthead bg-fd2 text-white text-center">
         <div class="container d-flex align-items-center flex-column">
-            <img src="{{url_for('static', filename='assets/img/logo.png')}}" class="d-block mx-auto img-fluid" alt="Logo"
-                style="height: 300px; object-fit: cover" id="logo" />
-            <h1 class="masthead-heading text-uppercase mb-0 letra"><span class="auto-type"></span></h1>
+            <img src="{{url_for('static', filename='assets/img/logo.png')}}" class="d-block mx-auto img-fluid"
+                alt="Logo" style="height: 300px; object-fit: cover" id="logo" />
+            <h1 class="masthead-heading text-uppercase mb-0 letra">
+                <span class="auto-type"></span>
+            </h1>
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon fan-icon"><i class="fas fa-fan"></i></div>
@@ -77,43 +80,51 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-icon="fas fa-sun">
                         <div class="card text-center mx-auto" style="max-width: 400px;">
-                            <img src="{{url_for('static', filename='assets/img/bubls-drawn-solar-panel.jpg')}}" class="card-img-top" alt="Energía Solar" style="height: 300px; object-fit: cover;">
+                            <img src="{{url_for('static', filename='assets/img/bubls-drawn-solar-panel.jpg')}}"
+                                class="card-img-top" alt="Energía Solar" style="height: 300px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">Energía Solar</h5>
-                                <p class="card-text">Una fuente limpia e inagotable, aprovechando la luz del sol para generar energía.</p>
+                                <p class="card-text">Una fuente limpia e inagotable, aprovechando la luz del sol para
+                                    generar energía.</p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item" data-icon="fas fa-wind">
                         <div class="card text-center mx-auto" style="max-width: 400px;">
-                            <img src="{{url_for('static', filename='assets/img/wind-fans.jpg')}}" class="card-img-top" alt="Energía Eólica" style="height: 300px; object-fit: cover;">
+                            <img src="{{url_for('static', filename='assets/img/wind-fans.jpg')}}" class="card-img-top"
+                                alt="Energía Eólica" style="height: 300px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">Energía Eólica</h5>
-                                <p class="card-text">Utiliza la fuerza del viento para mover turbinas y generar electricidad sostenible.</p>
+                                <p class="card-text">Utiliza la fuerza del viento para mover turbinas y generar
+                                    electricidad sostenible.</p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item" data-icon="fas fa-water">
                         <div class="card text-center mx-auto" style="max-width: 400px;">
-                            <img src="{{url_for('static', filename='assets/img/futuristic-representation-water-structure.jpg')}}" class="card-img-top" alt="Energía Hidráulica" style="height: 300px; object-fit: cover;">
+                            <img src="{{url_for('static', filename='assets/img/futuristic-representation-water-structure.jpg')}}"
+                                class="card-img-top" alt="Energía Hidráulica" style="height: 300px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">Energía Hidráulica</h5>
-                                <p class="card-text">Genera electricidad aprovechando la fuerza del agua en movimiento.</p>
+                                <p class="card-text">Genera electricidad aprovechando la fuerza del agua en movimiento.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#energyCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#energyCarousel"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#energyCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#energyCarousel"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Siguiente</span>
                 </button>
             </div>
         </div>
-    </section>                                      
+    </section>
     <section class="page-section dashboard bg-fd2" id="dashboard">
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
@@ -129,22 +140,26 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <img src="data: image/png;base64, {{ graph_url }}" alt="Grafico de Barras" width="100%" height="100%"/>
+                        <img src="data: image/png;base64, {{ graph_url }}" alt="Grafico de Barras" width="100%"
+                            height="100%" />
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <img src="data: image/png;base64, {{ graph_url2 }}" alt="Grafico de Barras" width="100%" height="100%"/>
+                        <img src="data: image/png;base64, {{ graph_url2 }}" alt="Grafico de Barras" width="100%"
+                            height="100%" />
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <img src="data: image/png;base64, {{ graph_url3 }}" alt="Grafico de Barras" width="100%" height="100%"/>
+                        <img src="data: image/png;base64, {{ graph_url3 }}" alt="Grafico de Barras" width="100%"
+                            height="100%" />
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-5">
                     <div class="dashboard-item mx-auto">
-                        <img src="data: image/png;base64, {{ graph_url4 }}" alt="Grafico de Barras" width="100%" height="100%"/>
+                        <img src="data: image/png;base64, {{ graph_url4 }}" alt="Grafico de Barras" width="100%"
+                            height="100%" />
                     </div>
                 </div>
             </div>
@@ -177,15 +192,15 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7 mb-3">
                         {% if porcentaje_renovable is not none %}
-                            <div class="resultado">
-                                <h4><span class="badge text-bg-success">
-                                <i class="fas fa-solar-panel"></i>El porcentaje de energia renovable en tu consumo:
-                                {{porcentaje_renovable | round(2)}} % </span></h4>
-                            </div>
+                        <div class="resultado">
+                            <h4><span class="badge text-bg-success">
+                                    <i class="fas fa-solar-panel"></i>El porcentaje de energia renovable en tu consumo:
+                                    {{porcentaje_renovable | round(2)}} % </span></h4>
+                        </div>
                         {% elif error %}
-                            <div class="error">
-                                <h4><span class="badge text-bg-danger">{{error}}</span></h4>
-                            </div>
+                        <div class="error">
+                            <h4><span class="badge text-bg-danger">{{error}}</span></h4>
+                        </div>
                         {% endif %}
                     </div>
                 </div>
@@ -281,13 +296,13 @@
                 </div>
             </div>
         </div>
-    </section>    
+    </section>
     <footer class="bg-footer text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <img src="{{url_for('static', filename='assets/img/logo_ciaf.webp')}}" class="d-block mx-auto img-fluid" alt="Logo-Ciaf"
-                        style="height: 100px; object-fit: cover" />
+                    <img src="{{url_for('static', filename='assets/img/logo_ciaf.webp')}}"
+                        class="d-block mx-auto img-fluid" alt="Logo-Ciaf" style="height: 100px; object-fit: cover" />
                 </div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="divider-custom">
@@ -297,8 +312,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <img src="{{url_for('static', filename='assets/img/logo_talentotech.webp')}}" class="d-block mx-auto img-fluid"
-                        alt="Logo-TIC" style="height: 100px; object-fit: cover" />
+                    <img src="{{url_for('static', filename='assets/img/logo_talentotech.webp')}}"
+                        class="d-block mx-auto img-fluid" alt="Logo-TIC" style="height: 100px; object-fit: cover" />
                 </div>
             </div>
         </div>
