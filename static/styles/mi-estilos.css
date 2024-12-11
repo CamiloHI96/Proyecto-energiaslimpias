@@ -41,3 +41,16 @@
     background-color: #4B4B4B;
     padding-top: 10%;
 }
+
+/* Para los separadores */
+.divider-custom-line.solar {
+    background-color: #FFD700; /* Amarillo para la energía solar */
+}
+
+.divider-custom-line.eolica {
+    background-color: #32CD32; /* Verde para la energía eólica */
+}
+
+.divider-custom-line.hidraulica {
+    background-color: #1E90FF; /* Azul para la energía hidráulica */
+}
