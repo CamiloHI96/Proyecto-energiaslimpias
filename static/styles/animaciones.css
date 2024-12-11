@@ -1,13 +1,7 @@
-/* #mainNav {
-    background: linear-gradient(180deg, #FCD116 33.33%, #0033A0 33.33%, #0033A0 66.66%, #CE1126 66.66%);
-    color: white;
-} */
 
 #logo {
     animation: movimiento 3s infinite;
-    /* Nombre de la animación, duración, y bucle infinito */
     position: relative;
-    /* Necesario para permitir movimientos */
 }
 
 @keyframes movimiento {
@@ -30,7 +24,6 @@
 
 .fan-icon {
     font-size: 100px;
-    /* Ajusta el tamaño según sea necesario */
     animation: spin 2s linear infinite;
 }
 

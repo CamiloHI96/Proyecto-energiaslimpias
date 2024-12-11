@@ -41,7 +41,7 @@
             </div>
         </div>
     </nav>
-    <header class="masthead bg-fd1 text-white text-center">
+    <header class="masthead bg-fd2 text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <img src="{{url_for('static', filename='assets/img/logo.png')}}" class="d-block mx-auto img-fluid" alt="Logo"
                 style="height: 300px; object-fit: cover" id="logo" />
@@ -56,6 +56,11 @@
                 renovable, una fuente inagotable de esperanza que ilumina el camino
                 hacia un mundo más limpio y sostenible.
             </p>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon fan-icon"><i class="fas fa-fan"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
         </div>
     </header>
     <section class="page-section bg-fd1 letra2 mb-0" id="energia">
@@ -108,7 +113,7 @@
                 </button>
             </div>
         </div>
-    </section>                                     
+    </section>                                      
     <section class="page-section dashboard bg-fd2" id="dashboard">
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
@@ -227,6 +232,56 @@
             </div>
         </div>
     </section>
+    <section class="page-section bg-fd1" id="contacto">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contacto</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-uppercase">Juan Camilo Hernandez Ibarguen</h5>
+                            <p class="card-text">Estudiante de Ingeniería De Software 6to Semestre</p>
+                            <p class="card-text">Universidad Ciaf</p>
+                            <a href="https://github.com/CamiloHI96" target="_blank" class="btn btn-secondary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-uppercase">Lina Marcela Sepúlveda</h5>
+                            <p class="card-text">Estudiante de Ingeniería De Software 4to Semestre</p>
+                            <p class="card-text">Universidad Ciaf</p><br>
+                            <a href="https://github.com/LinaSepulveda30" target="_blank" class="btn btn-secondary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-uppercase">Erlin Julian Quesada Pinzon</h5>
+                            <p class="card-text">Estudiante de Ingeniería De Software</p>
+                            <p class="card-text">Universidad UTP</p><br>
+                            <a href="https://github.com/julianqput" target="_blank" class="btn btn-secondary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
     <footer class="bg-footer text-center">
         <div class="container">
             <div class="row">
@@ -235,9 +290,11 @@
                         style="height: 100px; object-fit: cover" />
                 </div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4 text-white">Juan Camilo Hernandez Ibarguen</h4>
-                    <h4 class="text-uppercase mb-4 text-white">Lina Marcela Sepúlveda</h4>
-                    <h4 class="text-uppercase mb-4 text-white">Erlin Julian Quesada Pinzon</h4>
+                    <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon fan-icon"><i class="fas fa-fan"></i></div>
+                        <div class="divider-custom-line"></div>
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <img src="{{url_for('static', filename='assets/img/logo_talentotech.webp')}}" class="d-block mx-auto img-fluid"
