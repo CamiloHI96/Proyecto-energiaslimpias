@@ -161,6 +161,20 @@ def obtener_grafica_area():
 
     return generar_grafico(fig)
 
+def cargar_archivo():
+    data = []
+    try:
+        with open('static/archivo/data_pagina.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+            # Saltamos el encabezado (si existe)
+            next(reader, None)
+            for row in reader:
+                data.append(row)
+        return data
+    except Exception as e:
+        print(f"Error al leer el archivo CSV: {e}")
+        return []
+
 @app.route('/', methods=['GET', 'POST']) # Rutas de Ejecuccion del Index.html
 def index():
     cargar_datos() # Carga de Datos
@@ -184,9 +198,10 @@ def index():
     graph_url2 = obtener_grafico_pastel()
     graph_url3 = obtener_grafico_lineas()
     graph_url4 = obtener_grafica_area()
+    archivo_data = cargar_archivo()
 
 
-    return render_template('index.html', porcentaje_renovable=porcentaje_renovable, error=error,graph_url=graph_url, graph_url2=graph_url2, graph_url3=graph_url3, graph_url4=graph_url4)
+    return render_template('index.html', porcentaje_renovable=porcentaje_renovable, error=error,graph_url=graph_url, graph_url2=graph_url2, graph_url3=graph_url3, graph_url4=graph_url4, data=archivo_data)
 
 # Ejecutar aplicación
 if __name__ == '__main__':
