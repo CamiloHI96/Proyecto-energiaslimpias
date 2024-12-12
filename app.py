@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 import csv
 import pandas as pd
+from flask_caching import Cache
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -12,7 +13,10 @@ from waitress import serve
 app = Flask(__name__)
 app.secret_key = 'camilo123'
 
-# Rutas dinámicas 
+# Configuración de Flask-Caching
+cache = Cache(app, config={"CACHE_TYPE": "simple"})
+
+# Rutas dinámicas
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, 'static/archivo')
 RUTA_CSV = os.path.join(DATA_DIR, 'data.csv')
@@ -29,22 +33,22 @@ datos_globales = {}
 datos_cargados = False
 
 def cargar_datos_renovables(ruta_csv):
-    """Carga datos del archivo CSV de energías renovables."""
     try:
         with open(ruta_csv, mode='r', encoding='utf-8') as archivo_csv:
             lector = csv.DictReader(archivo_csv)
-            return [{
-                'entity': fila['Entity'],
-                'code': fila['Code'],
-                'year': int(fila['Year']),
-                'renewables': float(fila['Renewables (% equivalent primary energy)'])
-            } for fila in lector]
+            return [
+                {
+                    'entity': fila['Entity'],
+                    'code': fila['Code'],
+                    'year': int(fila['Year']),
+                    'renewables': float(fila['Renewables (% equivalent primary energy)'])
+                } for fila in lector
+            ]
     except Exception as e:
         print(f"Error al leer el archivo CSV: {e}")
         return []
 
 def cargar_datos():
-    """Carga los datos globales de todas las fuentes de energía renovable."""
     global datos_globales, datos_cargados
     if not datos_cargados:
         datos_globales['renovables'] = cargar_datos_renovables(RUTA_CSV)
@@ -57,7 +61,6 @@ def cargar_datos():
         datos_cargados = True
 
 def generar_grafico(figura, formato='png'):
-    """Genera un gráfico y lo guarda en memoria en formato base64."""
     img = BytesIO()
     plt.tight_layout()
     figura.savefig(img, format=formato)
@@ -65,8 +68,8 @@ def generar_grafico(figura, formato='png'):
     plt.close(figura)
     return base64.b64encode(img.getvalue()).decode('utf-8')
 
+@cache.memoize(timeout=300)
 def obtener_grafico_barras():
-    """Genera el gráfico de barras de producción por fuente."""
     data = {key: value for key, value in datos_globales.items() if isinstance(value, (int, float))}
     df = pd.DataFrame(list(data.items()), columns=['Fuente', 'Producción (TWh)'])
 
@@ -78,8 +81,8 @@ def obtener_grafico_barras():
     
     return generar_grafico(fig)
 
+@cache.memoize(timeout=300)
 def obtener_grafico_pastel():
-    """Genera el gráfico de pastel de participación de energías renovables."""
     df_renewables = pd.read_csv(os.path.join(DATA_DIR, '04 share-electricity-renewables.csv'))
     df_wind = pd.read_csv(os.path.join(DATA_DIR, '11 share-electricity-wind.csv'))
     df_solar = pd.read_csv(os.path.join(DATA_DIR, '15 share-electricity-solar.csv'))
@@ -107,6 +110,7 @@ def obtener_grafico_pastel():
     
     return generar_grafico(fig)
 
+@cache.memoize(timeout=300)
 def obtener_grafico_lineas():
     """Genera el gráfico de líneas de capacidad instalada de energía eólica vs solar."""
     wind_data = pd.read_csv(os.path.join(DATA_DIR, '09 cumulative-installed-wind-energy-capacity-gigawatts.csv'))
@@ -130,6 +134,7 @@ def obtener_grafico_lineas():
 
     return generar_grafico(fig)
 
+@cache.memoize(timeout=300)
 def obtener_grafica_area():
     renewable_data = pd.read_csv('static/archivo/02 modern-renewable-energy-consumption.csv')
 
@@ -161,13 +166,13 @@ def obtener_grafica_area():
 
     return generar_grafico(fig)
 
+@cache.memoize(timeout=300)
 def cargar_archivo():
     data = []
     try:
         with open('static/archivo/data_pagina.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
-            # Saltamos el encabezado (si existe)
-            next(reader, None)
+            next(reader, None)  # Saltar encabezado
             for row in reader:
                 data.append(row)
         return data
@@ -175,9 +180,9 @@ def cargar_archivo():
         print(f"Error al leer el archivo CSV: {e}")
         return []
 
-@app.route('/', methods=['GET', 'POST']) # Rutas de Ejecuccion del Index.html
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    cargar_datos() # Carga de Datos
+    cargar_datos()
 
     porcentaje_renovable = None
     error = None
@@ -193,7 +198,7 @@ def index():
         except ValueError:
             error = "Por favor ingrese un valor válido para el consumo total."
 
-    # Generación de gráficos
+    # Generación de gráficos y carga de tabla
     graph_url = obtener_grafico_barras()
     graph_url2 = obtener_grafico_pastel()
     graph_url3 = obtener_grafico_lineas()
@@ -203,7 +208,6 @@ def index():
 
     return render_template('index.html', porcentaje_renovable=porcentaje_renovable, error=error,graph_url=graph_url, graph_url2=graph_url2, graph_url3=graph_url3, graph_url4=graph_url4, data=archivo_data)
 
-# Ejecutar aplicación
 if __name__ == '__main__':
     if os.getenv('RENDER_ENV') == 'true':
         print("Running on Render")
